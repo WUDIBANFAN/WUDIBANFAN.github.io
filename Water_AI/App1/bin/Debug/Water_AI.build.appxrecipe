@@ -7,38 +7,38 @@
     <PackageArchitecture>neutral</PackageArchitecture>
   </PropertyGroup>
   <ItemGroup>
-    <AppXManifest Include="D:\learning materials\大三下\节能减排大赛\Water_AI\App1\bin\Debug\AppxManifest.xml">
+    <AppXManifest Include="C:\Users\lenovo\Desktop\Water_AI\App1\bin\Debug\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
-    <AppxPackagedFile Include="D:\learning materials\大三下\节能减排大赛\Water_AI\App1\index.html">
+    <AppxPackagedFile Include="C:\Users\lenovo\Desktop\Water_AI\App1\index.html">
       <PackagePath>index.html</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\learning materials\大三下\节能减排大赛\Water_AI\App1\images\logo.png">
+    <AppxPackagedFile Include="C:\Users\lenovo\Desktop\Water_AI\App1\images\logo.png">
       <PackagePath>images\logo.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\learning materials\大三下\节能减排大赛\Water_AI\App1\images\smalllogo.png">
+    <AppxPackagedFile Include="C:\Users\lenovo\Desktop\Water_AI\App1\images\smalllogo.png">
       <PackagePath>images\smalllogo.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\learning materials\大三下\节能减排大赛\Water_AI\App1\images\splashscreen.png">
+    <AppxPackagedFile Include="C:\Users\lenovo\Desktop\Water_AI\App1\images\splashscreen.png">
       <PackagePath>images\splashscreen.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\learning materials\大三下\节能减排大赛\Water_AI\App1\images\storelogo.png">
+    <AppxPackagedFile Include="C:\Users\lenovo\Desktop\Water_AI\App1\images\storelogo.png">
       <PackagePath>images\storelogo.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\learning materials\大三下\节能减排大赛\Water_AI\App1\js\script.js">
+    <AppxPackagedFile Include="C:\Users\lenovo\Desktop\Water_AI\App1\js\script.js">
       <PackagePath>js\script.js</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\learning materials\大三下\节能减排大赛\Water_AI\App1\css\styles.css">
+    <AppxPackagedFile Include="C:\Users\lenovo\Desktop\Water_AI\App1\css\styles.css">
       <PackagePath>css\styles.css</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\learning materials\大三下\节能减排大赛\Water_AI\App1\bin\Debug\resources.pri">
+    <AppxPackagedFile Include="C:\Users\lenovo\Desktop\Water_AI\App1\bin\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
     </AppxPackagedFile>
   </ItemGroup>

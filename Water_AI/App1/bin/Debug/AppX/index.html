@@ -1,10 +1,11 @@
 ﻿<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>水处理AI智能助手</title>
-    <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>水处理AI智能平台</title>
+    <link href="https://fonts.googleapis.com/css2?family=ZCOOL+XiaoWei&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
     <header>
@@ -14,6 +15,7 @@
                 <li><a href="#features" class="active">功能介绍</a></li>
                 <li><a href="#applications">应用场景</a></li>
                 <li><a href="#agent">智能体接入</a></li>
+                <li><a href="#analytics">数据分析</a></li>
                 <li><a href="#contact">联系我们</a></li>
             </ul>
         </nav>
@@ -29,9 +31,6 @@
                 <li>优化水处理流程</li>
                 <li>节能减排建议</li>
             </ul>
-            <div class="section-image">
-                <img src="https://images.unsplash.com/photo-1563371351-e53ebb744a1f" alt="水处理示意图">
-            </div>
         </section>
 
         <section id="applications" class="section">
@@ -43,27 +42,28 @@
                 <li>农业灌溉系统</li>
                 <li>智能环保平台</li>
             </ul>
-            <div class="section-image">
-                <img src="https://images.unsplash.com/photo-1581091215367-6594f6cfb88b" alt="AI应用场景图">
-            </div>
         </section>
 
         <section id="agent" class="section">
             <h2>接入智能体</h2>
             <p>我们的智能体由 Coze 提供支持，点击或使用下方窗口即可与 AI 互动，获取水处理建议。</p>
-            <iframe src="https://www.coze.cn/store/agent/7480800855546380299?bot_id=true"
-                    width="100%" height="600" style="border: none; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-            </iframe>
+            <iframe src="https://www.coze.cn/store/agent/7480800855546380299?bot_id=true"></iframe>
+        </section>
+
+        <section id="analytics" class="section">
+            <h2>数据分析面板</h2>
+            <p>以下是来自 Coze 智能体的数据分析概览，展示最近 7 天的交互情况。</p>
+            <iframe src="https://www.coze.cn/space/7480800513311784997/bot/7480800855546380299/analysis?overview_time_range=last_7_days"></iframe>
         </section>
 
         <section id="contact" class="section">
             <h2>联系我们</h2>
             <form id="contact-form">
                 <label for="name">姓名</label>
-                <input type="text" id="name" required>
+                <input type="text" id="name" required />
 
                 <label for="email">邮箱</label>
-                <input type="email" id="email" required>
+                <input type="email" id="email" required />
 
                 <label for="message">留言</label>
                 <textarea id="message" rows="5" required></textarea>
