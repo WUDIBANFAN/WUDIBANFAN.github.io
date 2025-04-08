@@ -44,6 +44,7 @@
             text-decoration: none;
             padding: 8px 15px;
             border-radius: 5px;
+            transition: background-color 0.3s;
         }
 
         nav ul li a:hover,
@@ -57,11 +58,27 @@
             margin: auto;
         }
 
+        /* 调整功能介绍和应用场景的行间距 */
         .features-list,
         .applications-list {
             list-style: disc;
             padding-left: 40px;
             margin-bottom: 30px;
+            line-height: 1.4; /* 调小行间距 */
+        }
+
+        .features-list li,
+        .applications-list li {
+            margin-bottom: 8px; /* 调整列表项间距 */
+        }
+
+        /* 减小节能减排建议和应用场景之间的间距 */
+        .features-list li:last-child {
+            margin-bottom: 15px; /* 减小与下一个列表的间距 */
+        }
+
+        .applications-list {
+            margin-top: 15px; /* 减小与上一个列表的间距 */
         }
 
         iframe {
@@ -90,6 +107,7 @@
             color: white;
             border: none;
             cursor: pointer;
+            transition: background-color 0.3s;
         }
 
         button:hover {
@@ -108,10 +126,12 @@
             border-radius: 30px;
             text-decoration: none;
             font-size: 18px;
+            transition: background-color 0.3s, transform 0.3s;
         }
 
         .cta-button a:hover {
             background-color: #007f8b;
+            transform: translateY(-2px);
         }
 
         footer {
@@ -120,6 +140,81 @@
             text-align: center;
             padding: 15px 0;
             margin-top: 40px;
+        }
+
+        /* 添加数据分析界面样式 */
+        .data-analysis {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        .data-analysis h3 {
+            color: #004e64;
+            margin-bottom: 15px;
+        }
+
+        .data-analysis iframe {
+            height: 400px;
+        }
+
+        /* 添加过渡效果 */
+        .section {
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        /* 优化表单样式 */
+        label {
+            font-weight: bold;
+            color: #004e64;
+        }
+
+        input:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #004e64;
+            box-shadow: 0 0 5px rgba(0, 78, 100, 0.3);
+        }
+
+        /* 优化标题样式 */
+        h2 {
+            color: #004e64;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: #004e64;
+        }
+
+        /* 响应式设计优化 */
+        @media (max-width: 768px) {
+            .section {
+                padding: 40px 15px;
+            }
+            
+            nav ul li {
+                margin: 0 10px;
+            }
+            
+            .cta-button a {
+                padding: 10px 25px;
+                font-size: 16px;
+            }
         }
     </style>
 </head>
@@ -130,6 +225,7 @@
             <ul>
                 <li><a href="#features" class="active">功能介绍</a></li>
                 <li><a href="#applications">应用场景</a></li>
+                <li><a href="#analysis">数据分析</a></li>
                 <li><a href="#agent">智能体接入</a></li>
                 <li><a href="#contact">联系我们</a></li>
             </ul>
@@ -157,6 +253,13 @@
                 <li>农业灌溉系统</li>
                 <li>智能环保平台</li>
             </ul>
+        </section>
+
+        <!-- 添加数据分析界面 -->
+        <section id="analysis" class="section data-analysis">
+            <h2>数据分析</h2>
+            <p>以下是水处理AI智能平台的最新数据分析，展示过去7天的系统运行情况和处理效果：</p>
+            <iframe src="https://www.coze.cn/space/7480800513311784997/bot/7480800855546380299/analysis?overview_time_range=last_7_days"></iframe>
         </section>
 
         <section id="agent" class="section">
@@ -189,5 +292,42 @@
     <footer>
         <p>&copy; 2025 水处理AI智能平台. 保留所有权利.</p>
     </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 滚动触发动画
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate');
+        }
+        });
+        }, {
+            threshold: 0.1
+        });
+
+            const fadeElements = document.querySelectorAll('.section, .cta-button');
+        fadeElements.forEach(el => observer.observe(el));
+
+        // 导航激活状态切换
+            const navLinks = document.querySelectorAll('nav ul li a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function () {
+                navLinks.forEach(item => item.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // 表单提交处理
+            const contactForm = document.getElementById('contact-form');
+        contactForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            alert(`感谢您的留言，${name}！\n我们将会尽快回复您的邮箱：${email}`);
+        contactForm.reset();
+        });
+        });
+    </script>
 </body>
 </html>
