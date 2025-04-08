@@ -1,95 +1,193 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>水处理AI智能平台</title>
-  <link rel="stylesheet" href="styles.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>水处理AI智能助手</title>
+    <link href="https://fonts.googleapis.com/css2?family=ZCOOL+XiaoWei&display=swap" rel="stylesheet">
+    <style>
+        * {
+            scroll-behavior: smooth;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'ZCOOL XiaoWei', serif;
+        }
+
+        body {
+            background-color: #f2f6fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #004e64;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 10px 0;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+        }
+
+        nav ul li a:hover,
+        nav ul li a.active {
+            background-color: #007f8b;
+        }
+
+        .section {
+            padding: 60px 20px;
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .features-list,
+        .applications-list {
+            list-style: disc;
+            padding-left: 40px;
+            margin-bottom: 30px;
+        }
+
+        iframe {
+            width: 100%;
+            height: 600px;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        input, textarea, button {
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #004e64;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #007f8b;
+        }
+
+        .cta-button {
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .cta-button a {
+            background-color: #004e64;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        .cta-button a:hover {
+            background-color: #007f8b;
+        }
+
+        footer {
+            background-color: #004e64;
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+            margin-top: 40px;
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <h1>水处理AI智能平台</h1>
-    <nav>
-      <ul>
-        <li><a href="#features" class="active">功能介绍</a></li>
-        <li><a href="#applications">应用场景</a></li>
-        <li><a href="#agent">智能体接入</a></li>
-        <li><a href="#contact">联系我们</a></li>
-      </ul>
-    </nav>
-  </header>
+    <header>
+        <h1>水处理AI智能平台</h1>
+        <nav>
+            <ul>
+                <li><a href="#features" class="active">功能介绍</a></li>
+                <li><a href="#applications">应用场景</a></li>
+                <li><a href="#agent">智能体接入</a></li>
+                <li><a href="#contact">联系我们</a></li>
+            </ul>
+        </nav>
+    </header>
 
-  <main>
-    <!-- 功能介绍 -->
-    <section id="features" class="section">
-      <h2>AI功能介绍</h2>
-      <ul class="features-list">
-        <li>实时水质分析</li>
-        <li>污染预测与预警</li>
-        <li>设备故障诊断</li>
-        <li>优化水处理流程</li>
-        <li>节能减排建议</li>
-      </ul>
-      <div class="section-image">
-        <img src="https://images.unsplash.com/photo-1563371351-e53ebb744a1f" alt="水处理示意图" />
-      </div>
-    </section>
+    <main>
+        <section id="features" class="section">
+            <h2>AI功能介绍</h2>
+            <ul class="features-list">
+                <li>实时水质分析</li>
+                <li>污染预测与预警</li>
+                <li>设备故障诊断</li>
+                <li>优化水处理流程</li>
+                <li>节能减排建议</li>
+            </ul>
+        </section>
 
-    <!-- 应用场景 -->
-    <section id="applications" class="section">
-      <h2>应用场景</h2>
-      <ul class="applications-list">
-        <li>城市污水处理厂</li>
-        <li>工业废水管理</li>
-        <li>水质监管部门</li>
-        <li>农业灌溉系统</li>
-        <li>智能环保平台</li>
-      </ul>
-      <div class="section-image">
-        <img src="https://images.unsplash.com/photo-1581091215367-6594f6cfb88b" alt="AI应用场景图" />
-      </div>
-    </section>
+        <section id="applications" class="section">
+            <h2>应用场景</h2>
+            <ul class="applications-list">
+                <li>城市污水处理厂</li>
+                <li>工业废水管理</li>
+                <li>水质监管部门</li>
+                <li>农业灌溉系统</li>
+                <li>智能环保平台</li>
+            </ul>
+        </section>
 
-    <!-- 接入智能体 -->
-    <section id="agent" class="section">
-      <h2>接入智能体</h2>
-      <p>我们的智能体由 Coze 提供支持，点击或使用下方窗口即可与 AI 互动，获取水处理建议。</p>
-      <iframe
-        src="https://www.coze.cn/store/agent/7480800855546380299?bot_id=true"
-        width="100%"
-        height="600"
-        style="border: none; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);"
-        allow="clipboard-write; microphone">
-      </iframe>
-    </section>
+        <section id="agent" class="section">
+            <h2>接入智能体</h2>
+            <p>我们的智能体由 Coze 提供支持，点击或使用下方窗口即可与 AI 互动，获取水处理建议。</p>
+            <iframe src="https://www.coze.cn/store/agent/7480800855546380299?bot_id=true"></iframe>
+        </section>
 
-    <!-- 联系表单 -->
-    <section id="contact" class="section">
-      <h2>联系我们</h2>
-      <form id="contact-form">
-        <label for="name">姓名</label>
-        <input type="text" id="name" required />
+        <section id="contact" class="section">
+            <h2>联系我们</h2>
+            <form id="contact-form">
+                <label for="name">姓名</label>
+                <input type="text" id="name" required>
 
-        <label for="email">邮箱</label>
-        <input type="email" id="email" required />
+                <label for="email">邮箱</label>
+                <input type="email" id="email" required>
 
-        <label for="message">留言</label>
-        <textarea id="message" rows="5" required></textarea>
+                <label for="message">留言</label>
+                <textarea id="message" rows="5" required></textarea>
 
-        <button type="submit">发送</button>
-      </form>
-    </section>
+                <button type="submit">发送</button>
+            </form>
+        </section>
 
-    <!-- 呼吁行动按钮 -->
-    <div class="cta-button">
-      <a href="#agent">立即体验智能体</a>
-    </div>
-  </main>
+        <div class="cta-button">
+            <a href="#agent">立即体验智能体</a>
+        </div>
+    </main>
 
-  <footer>
-    <p>&copy; 2025 水处理AI智能平台. 保留所有权利.</p>
-  </footer>
-
-  <script src="script.js"></script>
+    <footer>
+        <p>&copy; 2025 水处理AI智能平台. 保留所有权利.</p>
+    </footer>
 </body>
 </html>
