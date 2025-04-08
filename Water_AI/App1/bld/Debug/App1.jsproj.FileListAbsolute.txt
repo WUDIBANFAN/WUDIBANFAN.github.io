@@ -1,0 +1,13 @@
+C:\Users\lenovo\Desktop\App1\App1\bin\Debug\resources.pri
+C:\Users\lenovo\Desktop\App1\App1\bin\Debug\AppxManifest.xml
+C:\Users\lenovo\Desktop\App1\App1\bin\Debug\App1.build.appxrecipe
+C:\Users\lenovo\Desktop\App1\App1\bld\Debug\priconfig.xml.intermediate
+C:\Users\lenovo\Desktop\App1\App1\bld\Debug\layout.resfiles.intermediate
+C:\Users\lenovo\Desktop\App1\App1\bld\Debug\resources.resfiles.intermediate
+C:\Users\lenovo\Desktop\App1\App1\bld\Debug\pri.resfiles.intermediate
+C:\Users\lenovo\Desktop\App1\App1\bld\Debug\priconfig.xml
+C:\Users\lenovo\Desktop\App1\App1\bld\Debug\layout.resfiles
+C:\Users\lenovo\Desktop\App1\App1\bld\Debug\resources.resfiles
+C:\Users\lenovo\Desktop\App1\App1\bld\Debug\pri.resfiles
+C:\Users\lenovo\Desktop\App1\App1\bld\Debug\LanguageQualifiers.txt
+C:\Users\lenovo\Desktop\App1\App1\bld\Debug\ProjectArchitectures.txt
