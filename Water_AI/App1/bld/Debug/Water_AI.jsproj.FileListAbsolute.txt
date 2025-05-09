@@ -1,0 +1,26 @@
+C:\Users\lenovo\Desktop\Water_AI\App1\bin\Debug\resources.pri
+C:\Users\lenovo\Desktop\Water_AI\App1\bin\Debug\AppxManifest.xml
+C:\Users\lenovo\Desktop\Water_AI\App1\bin\Debug\Water_AI.build.appxrecipe
+C:\Users\lenovo\Desktop\Water_AI\App1\bld\Debug\priconfig.xml.intermediate
+C:\Users\lenovo\Desktop\Water_AI\App1\bld\Debug\layout.resfiles.intermediate
+C:\Users\lenovo\Desktop\Water_AI\App1\bld\Debug\resources.resfiles.intermediate
+C:\Users\lenovo\Desktop\Water_AI\App1\bld\Debug\pri.resfiles.intermediate
+C:\Users\lenovo\Desktop\Water_AI\App1\bld\Debug\priconfig.xml
+C:\Users\lenovo\Desktop\Water_AI\App1\bld\Debug\layout.resfiles
+C:\Users\lenovo\Desktop\Water_AI\App1\bld\Debug\resources.resfiles
+C:\Users\lenovo\Desktop\Water_AI\App1\bld\Debug\pri.resfiles
+C:\Users\lenovo\Desktop\Water_AI\App1\bld\Debug\LanguageQualifiers.txt
+C:\Users\lenovo\Desktop\Water_AI\App1\bld\Debug\ProjectArchitectures.txt
+D:\learning materials\大三下\节能减排大赛\Water_AI\App1\bin\Debug\resources.pri
+D:\learning materials\大三下\节能减排大赛\Water_AI\App1\bin\Debug\AppxManifest.xml
+D:\learning materials\大三下\节能减排大赛\Water_AI\App1\bin\Debug\Water_AI.build.appxrecipe
+D:\learning materials\大三下\节能减排大赛\Water_AI\App1\bld\Debug\priconfig.xml.intermediate
+D:\learning materials\大三下\节能减排大赛\Water_AI\App1\bld\Debug\layout.resfiles.intermediate
+D:\learning materials\大三下\节能减排大赛\Water_AI\App1\bld\Debug\resources.resfiles.intermediate
+D:\learning materials\大三下\节能减排大赛\Water_AI\App1\bld\Debug\pri.resfiles.intermediate
+D:\learning materials\大三下\节能减排大赛\Water_AI\App1\bld\Debug\priconfig.xml
+D:\learning materials\大三下\节能减排大赛\Water_AI\App1\bld\Debug\layout.resfiles
+D:\learning materials\大三下\节能减排大赛\Water_AI\App1\bld\Debug\resources.resfiles
+D:\learning materials\大三下\节能减排大赛\Water_AI\App1\bld\Debug\pri.resfiles
+D:\learning materials\大三下\节能减排大赛\Water_AI\App1\bld\Debug\LanguageQualifiers.txt
+D:\learning materials\大三下\节能减排大赛\Water_AI\App1\bld\Debug\ProjectArchitectures.txt
