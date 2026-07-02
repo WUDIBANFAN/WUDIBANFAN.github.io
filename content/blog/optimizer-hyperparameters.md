@@ -6,7 +6,6 @@ categories = ['Hyperparameters Tuning']
 tags = ['AdamW', 'Weight Decay', '梯度裁剪', '深度学习']
 +++
 
-# 优化器超参调优（Optimizer Hyperparameters）
 
 > AdamW + 梯度控制 + 梯度累积
 

@@ -6,7 +6,6 @@ categories = ['Hyperparameters Tuning']
 tags = ['Batch Size', 'DataLoader', '采样策略', '深度学习']
 +++
 
-# Batch 与采样策略（Batch & Sampling Strategy）
 
 > Batch Size 权衡 · 重采样 · DataLoader 优化
 

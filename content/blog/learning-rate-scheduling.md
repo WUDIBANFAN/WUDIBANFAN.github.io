@@ -6,7 +6,6 @@ categories = ['Hyperparameters Tuning']
 tags = ['Learning Rate', 'Cosine Annealing', 'Warmup', '深度学习']
 +++
 
-# 学习率调度（Learning Rate Scheduling）
 
 > 深度学习训练中最核心的超参之一
 

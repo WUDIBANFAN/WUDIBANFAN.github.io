@@ -6,7 +6,6 @@ categories = ['Hyperparameters Tuning']
 tags = ['Two-Stage Training', 'Layer Decay', 'Early Stopping', '深度学习']
 +++
 
-# 进阶训练策略（Advanced Training Strategies）
 
 > Two-Stage Training · LR Layer Decay · Early Stopping · 权重初始化
 

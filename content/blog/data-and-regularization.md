@@ -6,7 +6,6 @@ categories = ['Hyperparameters Tuning']
 tags = ['Dropout', 'EMA', '数据增强', '正则化', '深度学习']
 +++
 
-# 数据与正则化（Data & Regularization）
 
 > Dropout/DropPath · EMA · 数据增强 · 类别均衡
 

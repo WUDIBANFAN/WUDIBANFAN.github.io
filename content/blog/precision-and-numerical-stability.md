@@ -6,7 +6,6 @@ categories = ['Hyperparameters Tuning']
 tags = ['BF16', 'FP16', '混合精度', 'Gradient Checkpointing', '深度学习']
 +++
 
-# 精度与数值稳定（Precision & Numerical Stability）
 
 > FP16/BF16 · Loss Scaling · Gradient Checkpointing
 

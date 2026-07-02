@@ -6,7 +6,6 @@ categories = ['Hyperparameters Tuning']
 tags = ['DeepSpeed', 'ZeRO', '分布式训练', '深度学习']
 +++
 
-# DeepSpeed ZeRO 训练专项调优
 
 > 从 Stage1 到 Stage3，8 卡 A800 环境
 
