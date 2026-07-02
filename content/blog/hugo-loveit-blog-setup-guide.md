@@ -263,70 +263,68 @@ https://WUDIBANFAN.github.io
 
 ## 五、后续日常写笔记流程
 
-### 5.1 新建文章
+打开一个新的 PowerShell 窗口（不要占用 `hugo server` 的窗口），依次执行：
 
-打开一个新的 PowerShell 窗口（不要占用 `hugo server` 的窗口）：
+### Step 1：新建文章
 
 ```powershell
 cd C:\Users\ethan.wang18\Desktop\my-blog
-hugo new blog/Your-Article-Title.md
+
+# 使用完整 Hugo 路径（最稳定）
+C:\Users\ethan.wang18\Desktop\wangcefile\hugo\hugo.exe new blog/Your-Article-Title.md
 ```
 
-> 如果全局 `hugo` 命令不可用，使用完整路径：
-> ```powershell
-> C:\Users\ethan.wang18\Desktop\wangcefile\hugo\hugo.exe new blog/Your-Article-Title.md
-> ```
+文件自动生成在 `content/blog/` 目录下。文件名会成为文章 URL 的一部分，建议用英文 + 连字符。
 
-文件自动生成在 `content/blog/` 目录下，文件名会成为文章 URL 的一部分（建议用英文 + 连字符）。
+### Step 2：编辑文章
 
-### 5.2 文章 Front Matter 说明
-
-生成后的 `.md` 文件顶部自带元数据：
+打开生成的 `.md` 文件，编辑 Front Matter：
 
 ```toml
 +++
 date = '2026-07-02T11:17:03+08:00'
-draft = true
-title = 'Your-Article-Title'
+draft = true            # ← 写完内容后改为 false
+title = '文章标题'
+categories = ['Blog']   # 手动添加分类
+tags = ['Tag1', 'Tag2'] # 手动添加标签
 +++
+
+这里开始写 Markdown 正文...
 ```
 
 | 字段 | 含义 |
 |------|------|
-| `title` | 文章标题，修改为你想要的标题（支持中文） |
-| `date` | 发布日期，自动生成，可手动调整 |
-| `draft` | **`true` = 草稿**，本地可见但外网隐藏；**`false` = 已发布** |
-| `categories` | 需手动添加，如 `categories = ['Blog']` |
-| `tags` | 需手动添加，如 `tags = ['Hugo', '教程']` |
+| `title` | 文章标题（支持中文） |
+| `draft` | `true` = 草稿，本地可见但外网隐藏；发布上线需改为 `false` |
+| `categories` | 文章分类，手动添加 |
+| `tags` | 文章标签，手动添加 |
 
-### 5.3 写文章 & 本地预览
+写完后用 Markdown 语法撰写正文。保存后在浏览器访问 `http://localhost:1313` 预览效果（需确保 `hugo server -D` 正在运行）。
 
-用 Markdown 语法撰写正文。保存后在浏览器访问 `http://localhost:1313` 查看效果（确保 `hugo server -D` 正在运行）。
+### Step 3：发布上线
 
-文章插图建议统一放在 `static/assets/` 目录，引用路径相对于 `static/` 根目录：
-
-```markdown
-![图片说明](/assets/your-image.png)
-```
-
-### 5.4 发布上线
-
-确认文章无误后，**将头部 `draft = true` 改为 `draft = false`**，然后一键推送：
+确认文章无误后，**将 `draft: true` 改为 `draft: false`**，然后推送：
 
 ```powershell
-cd C:\Users\ethan.wang18\Desktop\my-blog
 git add .
-git commit -m "Add new note: 笔记名称"
+git commit -m "New post: 文章标题"
 git push origin main
 ```
 
-推送后等待 **1-3 分钟**，外网网站自动同步新笔记。
+> 如果 `git push` 报网络错误（`Could not connect to server`），先配置代理再重试：
+> ```powershell
+> git config --local http.proxy http://127.0.0.1:7890
+> git config --local https.proxy http://127.0.0.1:7890
+> git push origin main
+> ```
 
-### 5.5 推送后验证
+推送后等待 **1-3 分钟**，网站自动同步新笔记。
+
+### Step 4：验证上线
 
 1. 打开 `https://github.com/WUDIBANFAN/WUDIBANFAN.github.io`
-2. 点击 **Actions** 标签，查看 `Build & Deploy Hugo Blog` 工作流是否绿色通过
-3. 通过后访问 `https://WUDIBANFAN.github.io/` 确认新文章已上线
+2. 点击 **Actions** 标签，确认 `Build & Deploy Hugo Blog` 工作流绿色通过
+3. 访问 `https://wudibanfan.github.io` 确认新文章已上线
 
 ---
 
