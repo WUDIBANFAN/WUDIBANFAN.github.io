@@ -1,6 +1,6 @@
 +++
 date = '2026-07-02T11:17:03+08:00'
-draft = true
+draft = false
 title = '从零搭建 Hugo + LoveIt 博客并部署到 GitHub Pages'
 categories = ['Blog']
 tags = ['Hugo', 'GitHub Pages', 'LoveIt']
