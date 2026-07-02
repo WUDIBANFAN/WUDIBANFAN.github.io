@@ -5,20 +5,148 @@
 {{- define "content" -}}
     {{- $params := .Scratch.Get "params" -}}
 
-    <div class="page archive" data-home="posts">
-        {{- /* Title */ -}}
-        <h2 class="single-title animate__animated animate__pulse animate__faster">
-            {{- .Params.Title | default (T .Section) | default .Section | dict "Some" | T "allSome" -}}
-        </h2>
+    {{- /* ---- 统计 ---- */ -}}
+    {{- $postCount := len .Site.RegularPages -}}
+    {{- $tagCount := len .Site.Taxonomies.tags -}}
+    {{- $categoryCount := len .Site.Taxonomies.categories -}}
 
-        {{- /* Paginate and render cards */ -}}
-        {{- if .Pages -}}
-            {{- $paginate := .Site.Params.section.paginate | default 10 -}}
-            {{- $paginator := .Paginate .Pages $paginate -}}
-            {{- range $paginator.Pages -}}
-                {{- .Render "summary" -}}
+    {{- /* ---- 头像 ---- */ -}}
+    {{- $avatar := .Site.Params.home.profile.avatarURL -}}
+    {{- if and (not $avatar) .Site.Params.home.profile.gravatarEmail -}}
+        {{- $avatar = printf "https://www.gravatar.com/avatar/%v?s=240&d=mp" (md5 .Site.Params.home.profile.gravatarEmail) -}}
+    {{- end -}}
+    {{- if not $avatar -}}
+        {{- $avatar = "https://www.gravatar.com/avatar/?s=240&d=mp" -}}
+    {{- end -}}
+
+    {{- /* ---- 社交链接 ---- */ -}}
+    {{- $socials := dict -}}
+    {{- $socialData := .Site.Data.social -}}
+    {{- if not $socialData -}}
+        {{- $socialData = index (transform.Unmarshal (resources.Get "data/social.yml").Content) -}}
+    {{- end -}}
+    {{- range $key, $val := .Site.Params.social -}}
+        {{- if $val -}}
+            {{- $cfg := index $socialData $key -}}
+            {{- if $cfg.Alias -}}
+                {{- $cfg = index $socialData $cfg.Alias -}}
             {{- end -}}
-            {{- partial "paginator.html" . -}}
+            {{- $url := printf "%v%v" ($cfg.Prefix | default "") $val -}}
+            {{- if eq $key "Email" -}}
+                {{- $url = printf "mailto:%v" $val -}}
+            {{- end -}}
+            {{- $socials = merge $socials (dict $key (dict "url" $url "title" ($cfg.Title | default $key) "icon" ($cfg.Icon.Class | default "fas fa-link"))) -}}
         {{- end -}}
+    {{- end -}}
+
+    <div class="blog-layout">
+        {{- /* ========== 左侧固定侧边栏 ========== */ -}}
+        <aside class="blog-sidebar">
+            <div class="sidebar-inner">
+                {{- /* 头像 */ -}}
+                <div class="sidebar-avatar">
+                    <img src="{{ $avatar }}" alt="{{ .Site.Params.author.name }}" width="100" height="100">
+                </div>
+
+                {{- /* 昵称 */ -}}
+                <div class="sidebar-name">{{ .Site.Params.author.name }}</div>
+                {{- with .Site.Params.author.email -}}
+                    <div class="sidebar-email">{{ . }}</div>
+                {{- end -}}
+
+                {{- /* 统计 */ -}}
+                <div class="sidebar-stats">
+                    <div class="stat-item">
+                        <span class="stat-label">Articles</span>
+                        <span class="stat-num">{{ $postCount }}</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Tags</span>
+                        <span class="stat-num">{{ $tagCount }}</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Categories</span>
+                        <span class="stat-num">{{ $categoryCount }}</span>
+                    </div>
+                </div>
+
+                {{- /* 社交按钮 */ -}}
+                <div class="sidebar-social">
+                    {{- range $key, $s := $socials -}}
+                        <a href="{{ $s.url }}" title="{{ $s.title }}" target="_blank" rel="noopener noreferrer">
+                            <i class="{{ $s.icon }}" aria-hidden="true"></i>
+                        </a>
+                    {{- end -}}
+                </div>
+            </div>
+        </aside>
+
+        {{- /* ========== 右侧文章卡片列表 ========== */ -}}
+        <main class="blog-content">
+            <h2 class="content-title">
+                {{- .Params.Title | default (T .Section) | default .Section | dict "Some" | T "allSome" -}}
+            </h2>
+
+            {{- if .Pages -}}
+                {{- $paginate := .Site.Params.section.paginate | default 10 -}}
+                {{- $paginator := .Paginate .Pages $paginate -}}
+                {{- range $paginator.Pages -}}
+                    {{- $pageParams := .Params | merge .Site.Params.page -}}
+                    <article class="blog-card">
+                        {{- /* 标题 */ -}}
+                        <h3 class="card-title">
+                            <a href="{{ .RelPermalink }}">{{ .Title | emojify }}</a>
+                        </h3>
+
+                        {{- /* 元信息行 */ -}}
+                        <div class="card-meta">
+                            {{- with .Site.Params.dateFormat | default "2006-01-02" | .PublishDate.Format -}}
+                                <span class="meta-date">
+                                    <i class="far fa-calendar-alt"></i>&nbsp;{{ . }}
+                                </span>
+                            {{- end -}}
+
+                            {{- $categories := slice -}}
+                            {{- range .Params.categories -}}
+                                {{- $cat := printf "/categories/%v" (. | urlize) | $.Site.GetPage -}}
+                                {{- if $cat -}}
+                                    {{- $categories = $categories | append (printf "<a href='%v'>%v</a>" $cat.RelPermalink $cat.Title) -}}
+                                {{- end -}}
+                            {{- end -}}
+                            {{- with delimit $categories ", " -}}
+                                <span class="meta-category">
+                                    <i class="far fa-folder"></i>&nbsp;{{ . | safeHTML }}
+                                </span>
+                            {{- end -}}
+
+                            <span class="meta-words">
+                                <i class="far fa-file-word"></i>&nbsp;{{ .WordCount }} words
+                            </span>
+
+                            <span class="meta-reading">
+                                <i class="far fa-clock"></i>&nbsp;{{ .ReadingTime }} min read
+                            </span>
+                        </div>
+
+                        {{- /* 摘要 */ -}}
+                        <div class="card-summary">
+                            {{- with .Summary -}}
+                                {{ . | plainify | truncate 200 }}
+                            {{- else -}}
+                                {{- .Description | plainify | truncate 200 -}}
+                            {{- end -}}
+                        </div>
+
+                        {{- /* Read More 按钮 */ -}}
+                        <div class="card-footer">
+                            <a href="{{ .RelPermalink }}" class="read-more-btn">Read more &raquo;</a>
+                        </div>
+                    </article>
+                {{- end -}}
+                {{- partial "paginator.html" . -}}
+            {{- else -}}
+                <p class="no-posts">No articles yet.</p>
+            {{- end -}}
+        </main>
     </div>
 {{- end -}}

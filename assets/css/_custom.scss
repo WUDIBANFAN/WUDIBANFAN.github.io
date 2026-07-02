@@ -1,5 +1,226 @@
 /* ============================================================
- * 滚动渐入动画：卡片从下方淡入浮现
+ * 双栏布局：左侧固定侧边栏 + 右侧卡片列表
+ * ============================================================ */
+
+/* ---- 整体布局容器 ---- */
+.blog-layout {
+    display: flex;
+    gap: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    min-height: 100vh;
+}
+
+/* ---- 左侧固定侧边栏 ---- */
+.blog-sidebar {
+    width: 260px;
+    flex-shrink: 0;
+    position: sticky;
+    top: 5rem;
+    align-self: flex-start;
+    max-height: calc(100vh - 7rem);
+    overflow-y: auto;
+}
+
+.sidebar-inner {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.sidebar-avatar img {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #eee;
+    margin-bottom: 0.75rem;
+}
+
+.sidebar-name {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 0.25rem;
+}
+
+.sidebar-email {
+    font-size: 0.8rem;
+    color: #999;
+    margin-bottom: 1rem;
+}
+
+/* ---- 侧边栏统计 ---- */
+.sidebar-stats {
+    display: flex;
+    justify-content: space-around;
+    padding: 1rem 0;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 1rem;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.2rem;
+}
+
+.stat-label {
+    font-size: 0.75rem;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.stat-num {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #2c3e50;
+}
+
+/* ---- 侧边栏社交按钮 ---- */
+.sidebar-social {
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
+}
+
+.sidebar-social a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #f5f5f5;
+    color: #555;
+    font-size: 1rem;
+    transition: all 0.25s ease;
+    text-decoration: none;
+}
+
+.sidebar-social a:hover {
+    background: #2c3e50;
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+/* ---- 右侧内容区 ---- */
+.blog-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.content-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #eee;
+}
+
+/* ---- 文章卡片 ---- */
+.blog-card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+    padding: 1.5rem 2rem;
+    margin-bottom: 1.25rem;
+    border: 1px solid #f0f0f0;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.blog-card:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+}
+
+/* ---- 卡片标题 ---- */
+.card-title {
+    margin: 0 0 0.75rem 0;
+    text-align: center;
+}
+
+.card-title a {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #2c3e50;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.card-title a:hover {
+    color: #0066cc;
+}
+
+/* ---- 卡片元信息行 ---- */
+.card-meta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.2rem;
+    font-size: 0.82rem;
+    color: #888;
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid #f5f5f5;
+}
+
+.card-meta span {
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
+}
+
+.card-meta .meta-category a {
+    color: #0066cc;
+    text-decoration: none;
+}
+
+.card-meta .meta-category a:hover {
+    text-decoration: underline;
+}
+
+/* ---- 卡片摘要 ---- */
+.card-summary {
+    font-size: 0.92rem;
+    color: #555;
+    line-height: 1.7;
+    margin-bottom: 1.25rem;
+}
+
+/* ---- Read More 按钮 ---- */
+.card-footer {
+    text-align: center;
+}
+
+.read-more-btn {
+    display: inline-block;
+    padding: 0.45rem 2rem;
+    font-size: 0.85rem;
+    color: #2c3e50;
+    background: #fff;
+    border: 1.5px solid #2c3e50;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.25s ease;
+    letter-spacing: 0.3px;
+}
+
+.read-more-btn:hover {
+    background: #2c3e50;
+    color: #fff;
+}
+
+/* ============================================================
+ * 滚动渐入动画
  * ============================================================ */
 @keyframes fadeInUp {
     from {
@@ -12,36 +233,92 @@
     }
 }
 
-/* 对 summary 卡片和 archive 条目应用渐入动画 */
-.home[data-home="posts"] .summary,
-.page.archive .summary,
-.archive-item {
+.blog-card {
+    animation: fadeInUp 0.5s ease-out both;
+}
+
+.blog-card:nth-child(1)  { animation-delay: 0.05s; }
+.blog-card:nth-child(2)  { animation-delay: 0.10s; }
+.blog-card:nth-child(3)  { animation-delay: 0.15s; }
+.blog-card:nth-child(4)  { animation-delay: 0.20s; }
+.blog-card:nth-child(5)  { animation-delay: 0.25s; }
+.blog-card:nth-child(6)  { animation-delay: 0.30s; }
+.blog-card:nth-child(7)  { animation-delay: 0.35s; }
+.blog-card:nth-child(8)  { animation-delay: 0.40s; }
+.blog-card:nth-child(9)  { animation-delay: 0.45s; }
+.blog-card:nth-child(10) { animation-delay: 0.50s; }
+
+/* 页面首次加载淡入 */
+.blog-layout {
     animation: fadeInUp 0.6s ease-out both;
 }
 
-/* 卡片逐个延迟（stagger 效果） */
-.home[data-home="posts"] .summary:nth-child(1)  { animation-delay: 0.05s; }
-.home[data-home="posts"] .summary:nth-child(2)  { animation-delay: 0.10s; }
-.home[data-home="posts"] .summary:nth-child(3)  { animation-delay: 0.15s; }
-.home[data-home="posts"] .summary:nth-child(4)  { animation-delay: 0.20s; }
-.home[data-home="posts"] .summary:nth-child(5)  { animation-delay: 0.25s; }
-.home[data-home="posts"] .summary:nth-child(6)  { animation-delay: 0.30s; }
-.home[data-home="posts"] .summary:nth-child(7)  { animation-delay: 0.35s; }
-.home[data-home="posts"] .summary:nth-child(8)  { animation-delay: 0.40s; }
-.page.archive .summary:nth-child(1)  { animation-delay: 0.05s; }
-.page.archive .summary:nth-child(2)  { animation-delay: 0.10s; }
-.page.archive .summary:nth-child(3)  { animation-delay: 0.15s; }
-.page.archive .summary:nth-child(4)  { animation-delay: 0.20s; }
-.page.archive .summary:nth-child(5)  { animation-delay: 0.25s; }
-.page.archive .summary:nth-child(6)  { animation-delay: 0.30s; }
-.page.archive .summary:nth-child(7)  { animation-delay: 0.35s; }
-.page.archive .summary:nth-child(8)  { animation-delay: 0.40s; }
-.page.archive .summary:nth-child(9)  { animation-delay: 0.45s; }
-.page.archive .summary:nth-child(10) { animation-delay: 0.50s; }
-
 /* ============================================================
- * 隐藏分类页面底部的多余 "More >>" 按钮
+ * 隐藏分类页多余 More >> 按钮
  * ============================================================ */
 .taxonomy-card .more-post {
     display: none !important;
+}
+
+/* ============================================================
+ * 分页器样式调整
+ * ============================================================ */
+.blog-content .pagination {
+    margin-top: 1.5rem;
+    justify-content: center;
+}
+
+/* ============================================================
+ * 移动端响应式：侧边栏移到顶部
+ * ============================================================ */
+@media (max-width: 900px) {
+    .blog-layout {
+        flex-direction: column;
+        padding: 1rem 0.5rem;
+    }
+
+    .blog-sidebar {
+        width: 100%;
+        position: static;
+        max-height: none;
+    }
+
+    .sidebar-inner {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 1rem;
+    }
+
+    .sidebar-avatar img {
+        width: 50px;
+        height: 50px;
+        margin-bottom: 0;
+    }
+
+    .sidebar-stats {
+        flex: 1;
+        border: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .sidebar-social {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .sidebar-email {
+        display: none;
+    }
+
+    .blog-card {
+        padding: 1rem 1.25rem;
+    }
+
+    .card-meta {
+        gap: 0.6rem;
+        font-size: 0.75rem;
+    }
 }
