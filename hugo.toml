@@ -1,19 +1,212 @@
-baseURL = "https://WUDIBANFAN.github.io/"
+baseURL = "https://wudibanfan.github.io/"
 title = "WangCe's Tech Notes"
 theme = "LoveIt"
 
 [site]
 locale = "en"
 
+# ============================================================
+# 全局参数
+# ============================================================
 [params]
+  # 默认主题模式 ["auto", "light", "dark"]
+  defaultTheme = "auto"
+  # 日期格式
+  dateFormat = "2006-01-02"
+  # 文章阅读时长统计
   readingTime = true
+  # 文章字数统计
   wordCount = true
+  # 页脚版权
   copyright = "2026 WangCe All Rights Reserved"
+  # 网站标题（用于 Open Graph / Twitter Cards / SEO）
+  title = "WangCe's Tech Notes"
+  # 网站描述（用于 SEO / RSS）
+  description = "Personal technical blog about AI, deep learning, and engineering."
 
+# ----------------------------------------------------------
+# 作者信息
+# ----------------------------------------------------------
 [params.author]
   name = "WUDIBANFAN"
+  email = ""
+  link = ""
   github = "https://github.com/WUDIBANFAN"
 
+# ----------------------------------------------------------
+# 顶部导航栏 Header
+# ----------------------------------------------------------
+[params.header]
+  # 桌面端导航模式 ["fixed", "normal", "auto"]
+  desktopMode = "fixed"
+  # 移动端导航模式 ["fixed", "normal", "auto"]
+  mobileMode = "auto"
+
+  [params.header.title]
+    # 导航栏标题/文字
+    name = "WangCe's Tech Notes"
+    # 是否开启打字机动画
+    typeit = false
+
+# ----------------------------------------------------------
+# 页脚 Footer
+# ----------------------------------------------------------
+[params.footer]
+  enable = true
+  # 是否显示 Hugo 和主题信息
+  hugo = true
+  # 是否显示版权信息
+  copyright = true
+  # 是否显示作者
+  author = true
+  # 网站创立年份
+  since = 2026
+
+# ----------------------------------------------------------
+# Section 页面（全部文章 /blog/）——卡片列表
+# ----------------------------------------------------------
+[params.section]
+  # 每页文章数
+  paginate = 10
+  # 日期格式（月-日）
+  dateFormat = "01-02"
+  # RSS 文章数
+  rss = 10
+
+# ----------------------------------------------------------
+# List 页面（分类 /categories/ 和标签 /tags/）
+# ----------------------------------------------------------
+[params.list]
+  paginate = 20
+  dateFormat = "01-02"
+  rss = 10
+
+# ----------------------------------------------------------
+# App / PWA 图标配置
+# ----------------------------------------------------------
+[params.app]
+  # 添加到手机主屏幕时的标题
+  title = "WangCe's Tech Notes"
+
+# ----------------------------------------------------------
+# 搜索功能
+# ----------------------------------------------------------
+[params.search]
+  enable = true
+  # 搜索引擎类型 ["lunr", "algolia", "fuse", "pagefind"]
+  type = "fuse"
+  # 搜索框占位提示语
+  placeholder = "Search articles..."
+  # 最大搜索结果数
+  maxResultLength = 10
+  # 结果摘要长度
+  snippetLength = 30
+
+# ----------------------------------------------------------
+# 首页配置
+# ----------------------------------------------------------
+[params.home]
+  rss = 10
+
+  # 首页个人信息区（头像 + 标题 + 副标题）
+  [params.home.profile]
+    enable = true
+    # Gravatar 邮箱（留空则用 avatarURL）
+    gravatarEmail = ""
+    # 头像图片 URL
+    avatarURL = ""
+    # 主页标题（支持 HTML）
+    title = "WangCe's Tech Notes"
+    # 主页副标题（支持 HTML）
+    subtitle = "AI · Deep Learning · Engineering Notes"
+    # 是否对副标题开启打字机动画
+    typeit = true
+    # 是否显示社交链接
+    social = true
+    # 免责声明（支持 HTML）
+    disclaimer = ""
+
+  # 首页文章列表
+  [params.home.posts]
+    enable = true
+    # 首页每页显示文章数
+    paginate = 6
+
+# ----------------------------------------------------------
+# 社交链接（首页侧边显示）
+# ----------------------------------------------------------
+[params.social]
+  GitHub = "WUDIBANFAN"
+  Email = ""
+
+# ----------------------------------------------------------
+# 文章/页面全局配置（侧边目录、代码块、分享等）
+# ----------------------------------------------------------
+[params.page]
+  # 是否启用 twemoji
+  twemoji = false
+  # 是否显示原始 Markdown 链接
+  linkToMarkdown = false
+  # 是否在 RSS 中显示全文
+  rssFullText = false
+
+  # ---- 侧边栏目录（TOC）----
+  [params.page.toc]
+    # 是否开启动态侧边栏目录
+    enable = true
+    # 是否保持静态目录（false = 侧边浮动目录）
+    keepStatic = false
+    # 是否自动折叠展开
+    auto = true
+
+  # ---- 代码块 ----
+  [params.page.code]
+    # 是否显示复制按钮
+    copy = true
+    # 默认展开显示的最大行数
+    maxShownLines = 50
+
+  # ---- KaTeX 数学公式 ----
+  [params.page.math]
+    enable = true
+    # KaTeX 扩展
+    copyTex = true
+    mhchem = true
+
+  # ---- 文章分享 ----
+  [params.page.share]
+    enable = true
+    X = true
+    Facebook = true
+    Linkedin = false
+    HackerNews = true
+    Reddit = false
+    Telegram = true
+    Weibo = true
+    Line = true
+
+# ----------------------------------------------------------
+# TypeIt 打字机动画全局配置
+# ----------------------------------------------------------
+[params.typeit]
+  # 打字速度（毫秒/步）
+  speed = 100
+  # 光标闪烁速度（毫秒）
+  cursorSpeed = 1000
+  # 光标字符（支持 HTML）
+  cursorChar = "|"
+  # 打字完成后光标持续时间（-1 = 无限闪烁）
+  duration = -1
+
+# ----------------------------------------------------------
+# CDN 加速（使用 jsdelivr）
+# ----------------------------------------------------------
+[params.cdn]
+  data = "jsdelivr.yml"
+
+# ============================================================
+# 顶部导航菜单
+# ============================================================
 [[menu.main]]
 name = "Home"
 url = "/"
