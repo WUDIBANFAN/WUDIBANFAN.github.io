@@ -28,8 +28,8 @@ locale = "en"
 # 作者信息
 # ----------------------------------------------------------
 [params.author]
-  name = "WUDIBANFAN"
-  email = ""
+  name = "WangCe"
+  email = "2253246@tongji.edu.cn"
   link = ""
   github = "https://github.com/WUDIBANFAN"
 
@@ -114,7 +114,7 @@ locale = "en"
     # Gravatar 邮箱（留空则用 avatarURL）
     gravatarEmail = ""
     # 头像图片 URL
-    avatarURL = ""
+    avatarURL = "/images/avatar.jpg"
     # 主页标题（支持 HTML）
     title = "WangCe's Tech Notes"
     # 主页副标题（支持 HTML）
