@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Blogs on WangCe&#39;s Tech Notes</title>
+		<link>http://localhost:1313/blog/</link>
+		<description>Recent content in Blogs on WangCe&#39;s Tech Notes</description>
+		<generator>Hugo</generator>
+		<language>en</language>
+		
+		
+		
+		
+			<lastBuildDate>Thu, 02 Jul 2026 11:17:03 +0800</lastBuildDate>
+		
+			<atom:link href="http://localhost:1313/blog/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>从零搭建 Hugo &#43; LoveIt 博客并部署到 GitHub Pages</title>
+				<link>http://localhost:1313/blog/hugo-loveit-blog-setup-guide/</link>
+				<pubDate>Thu, 02 Jul 2026 11:17:03 +0800</pubDate>
+				<guid>http://localhost:1313/blog/hugo-loveit-blog-setup-guide/</guid>
+				<description>&lt;p&gt;记录从零开始用 Hugo + LoveIt 主题搭建个人技术博客，并自动部署到 GitHub Pages 的完整过程。&lt;/p&gt;</description>
+			</item>
+	</channel>
+</rss>

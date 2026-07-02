@@ -1,0 +1,40 @@
+baseURL = "https://WUDIBANFAN.github.io/"
+title = "WangCe's Tech Notes"
+theme = "LoveIt"
+
+[site]
+locale = "en"
+
+[params]
+  readingTime = true
+  wordCount = true
+  copyright = "2026 WangCe All Rights Reserved"
+
+[params.author]
+  name = "WUDIBANFAN"
+  github = "https://github.com/WUDIBANFAN"
+
+[[menu.main]]
+name = "Home"
+url = "/"
+weight = 1
+
+[[menu.main]]
+name = "Blog"
+url = "/blog/"
+weight = 2
+
+[[menu.main]]
+name = "Tags"
+url = "/tags/"
+weight = 3
+
+[[menu.main]]
+name = "Categories"
+url = "/categories/"
+weight = 4
+
+[[menu.main]]
+name = "Search"
+url = "/search/"
+weight = 5
