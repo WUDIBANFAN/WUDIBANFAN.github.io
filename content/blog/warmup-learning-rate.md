@@ -1,53 +1,58 @@
 +++
 date = '2026-07-02T18:00:00+08:00'
 draft = false
-title = '学习率 Warmup 预热策略详解'
+title = '学习率 Warmup 预热策略笔记'
 categories = ['Hyperparameters Tuning']
 tags = ['Warmup', 'Learning Rate', '深度学习', '训练技巧']
 +++
 
-详细讲解深度学习中 Warmup 预热策略的原理、类型、代码实现，以及学习率设定的关键考量。
+关于深度学习中 Warmup 预热策略的整理，包括为什么需要预热、Constant 和 Gradual 两种方式、以及常见的 Linear/Cosine Warmup 方法。
 
 <!--more-->
 
-## 一、Warmup 定义
+## 一、什么是 Warmup
 
-Warmup（预热）是在 ResNet 论文中提出的一种学习率预热方法。它在训练开始时先使用一个较小的学习率，训练一定 epochs 或 steps 后，再切换到预设的大学习率进行训练。
+Warmup（预热）这个概念最早在 ResNet 论文里提出。简单说就是：训练刚开始时不直接用预设的大学习率，而是先用一个很小的学习率跑一段时间，让模型"适应"一下，再切回正常学习率。
 
-## 二、学习率相关
+为什么需要这样做？因为训练刚开始的时候，模型权重是随机初始化的，梯度方向非常不稳定。如果一上来就用大学习率，很容易让训练发散或震荡。先小步走几步，等模型稍微稳定了再加速。
 
-### 学习率设定的理论
+## 二、学习率设定的几个要点
 
-| 情况 | 理论上 | 实际上 |
-|------|--------|--------|
-| 学习率过小 | 收敛过慢 | 不收敛 |
-| 学习率过大 | 错过局部最优 | 不收敛 |
+在聊 Warmup 之前，先说一下学习率本身的一些经验：
 
-还没有通用理论来解释为什么会造成这种情况。
+| 学习率 | 可能的结果 |
+|--------|-----------|
+| 太小 | 收敛极慢，或者根本不收敛 |
+| 太大 | 在最优解附近来回跳，或者直接发散 |
+| 适中 | 正常收敛 |
 
-### 设定学习率的方法
+虽然理论上学习率过大/过小都会收敛，只是速度不同，但实际上经常出现学习率不对就完全不收敛的情况——目前还没有一个通用理论能完全解释清楚。
 
-1. **初始阶段**：选择一个合适的学习率——不一定是能取得最好精度的学习率，而是精度虽有些下降但收敛速度更快的学习率。这样可以省下时间去调其他参数。
+一些实践经验：
 
-2. **样本容量影响**：样本容量不变的情况下一般不需要再调整学习率；若扩充了样本容量，则需要重新考虑。
+- **初始学习率**：不需要一上来就追求最优精度，先选一个收敛速度快、精度可接受的 lr，快速迭代调其他参数
+- **样本量变化**：数据量不变时一般不用调 lr；如果扩充了数据集，需要重新评估
+- **后期降低**：训练后期把 lr 降下来更容易找到局部最优，可以同时增大 batch size 让训练更稳定
+- **babysitting 策略**：盯着验证集的精度曲线，精度不涨了就手动降 lr，再继续跑
+- **常见取值**：`1e-05`、`2e-05`、`5e-05`；从头训练可以从 `0.01` 开始试
 
-3. **最终阶段降低学习率**（babysitting）：在验证集上精度不再提升时降低学习率，更容易找到局部最优。可以同时增加 batch size 使训练更稳定。
-
-4. **常见学习率取值**：`1e-05`，`2e-05`，`5e-05`。从头训练可以从 `0.01` 开始试。
-
-## 三、Warmup 的作用
+## 三、Warmup 的两种实现方式
 
 ### Constant Warmup
 
-由于刚开始训练时，模型的权重是随机初始化的，此时若选择一个较大的学习率，可能带来模型的不稳定（振荡）。选择 Warmup 预热学习率的方式，可以使开始训练的几个 epochs 内学习率较小，模型慢慢趋于稳定后再用预设学习率训练，收敛速度更快，效果更佳。
+最简单的做法：前 N 个 steps 用小学习率，达到某个条件后直接切成大学习率。
 
-**Example**：ResNet 论文中使用 110 层 ResNet 在 CIFAR-10 上训练时，先用 0.01 的学习率训练直到训练误差低于 80%（约 400 steps），然后使用 0.1 的学习率进行训练。
+Yann LeCun 团队的 ResNet 论文里就用了这个方法：110 层的 ResNet 在 CIFAR-10 上训练时，先用 `lr=0.01` 训练到训练误差低于 80%（大约 400 steps），然后切到 `lr=0.1` 继续训练。
+
+**缺点**：学习率从很小突然跳到大，切换瞬间训练误差可能会突然增大。
+
+![Constant Warmup](/images/warmup-1.png)
 
 ### Gradual Warmup
 
-Constant warmup 的不足：从很小的学习率一下跃变为较大的学习率可能导致训练误差突然增大。Facebook 在 2018 年提出了 Gradual Warmup 来解决这个问题——从最小学习率开始，每个 step 线性增大，直到达到预设的最大学习率。
+2018 年 Facebook 提出了改进方案：不要突然跳，而是每个 step 线性增大一点点，平滑地从最小 lr 过渡到目标 lr。
 
-Gradual Warmup 的实现逻辑：
+核心逻辑很简单：
 
 ```python
 import numpy as np
@@ -55,46 +60,72 @@ import numpy as np
 warmup_steps = 2500
 init_lr = 0.1
 max_steps = 15000
-learning_rate = init_lr
 
 for train_steps in range(max_steps):
-    if warmup_steps and train_steps < warmup_steps:
-        warmup_percent_done = train_steps / warmup_steps
-        warmup_learning_rate = init_lr * warmup_percent_done
-        learning_rate = warmup_learning_rate
+    if train_steps < warmup_steps:
+        # 预热阶段：线性增长
+        warmup_percent = train_steps / warmup_steps
+        learning_rate = init_lr * warmup_percent
     else:
-        # 预热结束后，学习率衰减
+        # 预热结束后开始衰减
         learning_rate = learning_rate ** 1.0001  # 近似指数衰减
 ```
 
-## 四、常见 Warmup 方法
+这个实现的好处是过渡完全平滑，不会在切换点产生 loss 跳变。
 
-### 4.1 Constant Warmup
+## 四、三种常见 Warmup 方法
 
-学习率从非常小的数值线性增加到预设值后保持不变：
+### Constant Warmup
+
+lr 从极小值线性增长到预设值后保持不变。
 
 ![Constant Warmup](/images/warmup-1.png)
 
-### 4.2 Linear Warmup
+### Linear Warmup
 
-学习率从非常小的数值线性增加到预设值后，再线性减小：
+lr 从极小值线性增长到预设值后，再线性减小回去。整体是一个三角波形状。
 
 ![Linear Warmup](/images/warmup-2.png)
 
-### 4.3 Cosine Warmup
+### Cosine Warmup
 
-学习率先从很小的数值线性增加到预设学习率，然后按照 cos 函数值进行衰减：
+当前大模型训练的事实标准。lr 先线性预热到目标值，然后按余弦函数平滑衰减。前半段下降慢、后半段加速下降，末端平滑趋近于 0。
 
 ![Cosine Warmup](/images/warmup-3.png)
 
-### Warmup 方法对比
+三种方法放在一起对比：
 
 ![Warmup 对比](/images/warmup-4.png)
 
-## 五、总结
+## 五、实际训练中的配置
 
-1. Warmup 是解决训练初期模型不稳定的有效方法
-2. **Constant warmup**：简单但可能在切换时产生误差跳变
-3. **Gradual warmup**：平滑过渡，更推荐使用
-4. 常用组配：**Linear Warmup + Cosine Annealing**（大模型训练事实标准）
-5. Warmup 步数通常设为总步数的 1%~5%
+在目前的深度学习框架里，Warmup 基本上和 Cosine Annealing 绑定使用，已成标配：
+
+```python
+from transformers import get_cosine_schedule_with_warmup
+
+scheduler = get_cosine_schedule_with_warmup(
+    optimizer,
+    num_warmup_steps=1000,      # 预热步数，通常为总步数的 1%~5%
+    num_training_steps=100000    # 总训练步数
+)
+```
+
+或者用 PyTorch 原生：
+
+```python
+from torch.optim.lr_scheduler import CosineAnnealingLR
+
+# 先手动实现 warmup 的增长阶段，再接入 CosineAnnealingLR
+scheduler = CosineAnnealingLR(optimizer, T_max=100000, eta_min=1e-6)
+```
+
+## 六、我的理解
+
+Warmup 本质上是在解决"冷启动"的问题。模型刚开始训练时跟一张白纸差不多，直接上大学习率就像刚学车就踩地板油——容易失控。先慢慢加速，等方向稳了再放开跑，这个直觉挺好理解的。
+
+结合之前写过的学习率调度笔记来看，完整的训练学习率策略是：
+
+> **Warmup（预热加速）→ Cosine Annealing（余弦衰减）→ 末端小幅微调**
+
+这个组合在现在的 LLM 预训练和多模态大模型里几乎成了标配，覆盖了 90% 以上的场景。

@@ -6,27 +6,31 @@ categories = ['Dev Tools']
 tags = ['Claude Code', 'DeepSeek', 'VSCode', 'AI', '配置']
 +++
 
-记录 Claude Code VSCode 插件对接 DeepSeek Anthropic 兼容接口时遇到的配置问题及完整解决方案。
+记录了在 VSCode 中使用 Claude Code 插件对接 DeepSeek 的 Anthropic 兼容接口时踩的坑和最终解决方案。
 
 <!--more-->
 
-## 一、原始配置存在的 3 个核心问题
+## 一、背景
 
-### 1. 鉴权变量名称不合法
+Claude Code 是 Anthropic 官方推出的 VSCode AI 编程插件，原生对接 Claude 系列模型。由于某些原因（账号限制、网络、成本等），希望通过 Anthropic 兼容接口将后端切换到 DeepSeek 的模型。DeepSeek 开放平台提供了 `/anthropic` 兼容端点，但在实际配置过程中遇到了几个卡点。
 
-自定义密钥变量名为 `Nio_claude`，插件仅识别 `ANTHROPIC_AUTH_TOKEN`，自定义名称无法被读取，直接造成鉴权失败。
+## 二、遇到的 3 个问题
 
-### 2. 模型名称格式不匹配
+### 1. 鉴权变量名不生效
 
-DeepSeek 的 Anthropic 兼容接口要求模型 ID 必须携带后缀，`deepseek-v4-pro` 需要修改为 `deepseek-v4-pro[1m]`，否则会返回模型不存在。
+最开始自定义的密钥环境变量名为 `Nio_claude`，但配置完成后始终无法连接。排查后发现，Claude Code 插件**仅识别固定名称 `ANTHROPIC_AUTH_TOKEN`**，自定义的变量名无法被读取，鉴权直接失败。这一点在官方文档没有明确说明，是从插件的环境变量白名单反推出来的。
 
-### 3. 配置层级单一，注入不稳定
+### 2. 模型 ID 需要加后缀
 
-仅在 VSCode 插件内配置环境变量，插件底层二进制程序会优先读取用户目录下的全局配置文件，仅靠插件配置会出现环境变量不生效。
+DeepSeek 的 API 页面显示的模型名为 `deepseek-v4-pro`，但配置这个名称会返回"模型不存在"（404）。查了 DeepSeek 的 Anthropic 兼容文档后发现，通过该接口访问时，模型 ID 必须带 `[1m]` 后缀，完整写法是 `deepseek-v4-pro[1m]`。这个后缀是兼容模式所要求的格式，不能省略。
 
-## 二、修正后的配置内容
+### 3. 环境变量注入层级不够
 
-### 1. VSCode settings.json（插件配置）
+仅在 VSCode 的 `settings.json` 中配置了插件级别的环境变量，但在某些情况下变量不会传递到底层的 CLI 二进制程序。原因是 Claude Code 的底层二进制会**优先读取用户目录下的全局配置文件**（`~/.claude/settings.json`），仅靠插件级别的配置无法保证变量在所有场景下生效。
+
+## 三、最终配置
+
+### 插件配置（VSCode settings.json）
 
 ```json
 {
@@ -61,12 +65,11 @@ DeepSeek 的 Anthropic 兼容接口要求模型 ID 必须携带后缀，`deepsee
 }
 ```
 
-### 2. 全局兜底配置（必加）
+### 全局兜底配置（必加，否则部分场景不生效）
 
-文件路径：
-
-- Linux 远程 SSH：`~/.claude/settings.json`
-- Windows 本地：`%USERPROFILE%\.claude\settings.json`
+文件位置：
+- **Linux SSH 远程**：`~/.claude/settings.json`
+- **Windows 本地**：`%USERPROFILE%\.claude\settings.json`
 
 ```json
 {
@@ -82,28 +85,38 @@ DeepSeek 的 Anthropic 兼容接口要求模型 ID 必须携带后缀，`deepsee
 }
 ```
 
-## 三、关键兼容优化项
+### 额外兼容配置
 
-关闭精简系统提示：新增环境变量 `CLAUDE_CODE_LEAN_SYSTEM_PROMPT=false`，用来解决 `400 unknown variant system` 协议报错，适配 DeepSeek 的 Anthropic 接口格式。
+新增环境变量 `CLAUDE_CODE_LEAN_SYSTEM_PROMPT=false`，用于解决对接 DeepSeek 时出现的 `400 unknown variant system` 协议报错。这个错误是因为 DeepSeek 的 Anthropic 兼容接口不支持精简版系统提示词格式，关闭后走标准 prompt 协议即可正常通信。
 
-## 四、生效操作步骤
+## 四、配置生效步骤
 
-1. 保存两份配置文件
-2. 完全关闭 VSCode，SSH 远程需要断开连接后重新登录
-3. 在 Claude Code 面板执行 `/logout` 清理旧会话
-4. 终端执行校验命令：
+1. 保存上述两份配置文件
+2. **完全关闭 VSCode**（SSH 远程连接需断开后重新登录）
+3. 在 Claude Code 面板执行 `/logout` 清理上一次的会话缓存
+4. 终端执行校验：
 
 ```bash
 env | grep ANTHROPIC
 ```
 
-能正常打印出地址、密钥、模型三个变量，代表环境注入成功。
+正确输出示例：
 
-## 五、核心总结
+```
+ANTHROPIC_AUTH_TOKEN=sk-c5d04aba0e634dd68119c0f5ff036cfb
+ANTHROPIC_BASE_URL=https://api.deepseek.com/anthropic
+ANTHROPIC_MODEL=deepseek-v4-pro[1m]
+```
 
-1. 鉴权密钥必须使用插件内置变量名 `ANTHROPIC_AUTH_TOKEN`，禁止自定义命名
-2. DeepSeek 兼容接口的模型名称必须补充 `[1m]` 后缀
-3. 采用 VSCode 插件配置 + 用户目录全局配置双层结构，避免变量注入失效
-4. 关闭精简系统提示词，规避协议字段不匹配问题
+三个变量全部打印出来即表示环境注入成功。
 
-> DeepSeek 开放平台的 API 名称只是为了方便用户识别，而不需要体现在 VSCode 的 Claude Code 配置文件中。
+## 五、开发中使用体验
+
+配置完成后流畅度还可以，基本响应速度与直接使用 DeepSeek 官方 API 一致。有一点值得注意：DeepSeek 开放平台展示的 API 名称只是为了让用户在控制台方便识别，不需要出现在 VSCode 的配置文件里——配置文件中用的是 Anthropic 兼容接口的变量名体系，与 DeepSeek 控制台的模型展示名是两套命名。
+
+### 踩坑总结
+
+- **变量名**：必须用 `ANTHROPIC_AUTH_TOKEN`，别自己起名字，插件不认
+- **模型后缀**：`[1m]` 不能省，这是兼容接口的格式要求
+- **双层配置**：插件配置 + 用户目录全局配置，缺一不可，否则部分场景变量注入失败
+- **精简 prompt**：`CLAUDE_CODE_LEAN_SYSTEM_PROMPT=false` 必须关，否则协议不兼容
