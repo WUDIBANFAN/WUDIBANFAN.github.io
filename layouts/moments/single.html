@@ -1,0 +1,41 @@
+{{- define "title" }}{{ .Title }} - Moments - {{ .Site.Title }}{{ end -}}
+
+{{- define "content" -}}
+    {{- $params := .Scratch.Get "params" -}}
+    <div class="page single special moment-single">
+        {{- /* 封面大图 */ -}}
+        {{- with .Params.cover -}}
+        <div class="moment-single-cover">
+            <img src="{{ . }}" alt="{{ $.Title }}">
+        </div>
+        {{- end -}}
+
+        {{- /* 标题 */ -}}
+        <h1 class="single-title animate__animated animate__flipInX">{{ .Title | emojify }}</h1>
+
+        {{- /* Meta: 日期 + 地点 */ -}}
+        <div class="post-meta">
+            <div class="post-meta-line">
+                {{- with .PublishDate -}}
+                    <i class="far fa-calendar-alt" aria-hidden="true"></i>&nbsp;<time datetime="{{ .Format "2006-01-02" }}">{{ .Format "2006-01-02" }}</time>&nbsp;
+                {{- end -}}
+                {{- with .Params.location -}}
+                    &nbsp;<i class="fas fa-map-marker-alt" aria-hidden="true"></i>&nbsp;{{ . }}
+                {{- end -}}
+            </div>
+        </div>
+
+        {{- /* 正文描述 */ -}}
+        <div class="content" id="content">
+            {{- with .Params.description -}}
+            <div class="moment-single-desc">{{ . }}</div>
+            {{- end -}}
+            {{- if .Content -}}
+            {{- dict "Content" .Content "Ruby" $params.ruby "Fraction" $params.fraction "Fontawesome" $params.fontawesome | partial "function/content.html" | safeHTML -}}
+            {{- end -}}
+        </div>
+
+        {{- /* Comment */ -}}
+        {{- partial "comment.html" . -}}
+    </div>
+{{- end -}}

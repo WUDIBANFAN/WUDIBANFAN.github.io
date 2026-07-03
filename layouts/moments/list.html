@@ -1,0 +1,58 @@
+{{- define "title" }}
+    {{- .Params.Title | default "Moments" }} - {{ .Site.Title -}}
+{{- end -}}
+
+{{- define "content" -}}
+    {{- $paginate := .Site.Params.moments.paginate | default 12 -}}
+    {{- $paginator := .Paginate .Pages $paginate -}}
+
+    <div class="moments-container">
+        <h2 class="content-title">Moments</h2>
+
+        <div class="moments-grid">
+            {{- range $paginator.Pages -}}
+            <article class="moment-card">
+                {{- /* ① 顶部封面大图 */ -}}
+                <a href="{{ .RelPermalink }}" class="moment-cover-link">
+                    {{- with .Params.cover -}}
+                    <div class="moment-cover">
+                        <img src="{{ . }}" alt="{{ $.Title }}" loading="lazy">
+                    </div>
+                    {{- else -}}
+                    <div class="moment-cover moment-cover-placeholder">
+                        <span>No Image</span>
+                    </div>
+                    {{- end -}}
+                </a>
+
+                {{- /* ② 日期 + 地点信息行 */ -}}
+                <div class="moment-info">
+                    {{- with .PublishDate -}}
+                    <span class="moment-date">{{ .Format "2006-01-02" }}</span>
+                    {{- end -}}
+                    {{- if and .Params.location .PublishDate -}}
+                    <span class="moment-sep">·</span>
+                    {{- end -}}
+                    {{- with .Params.location -}}
+                    <span class="moment-location">{{ . }}</span>
+                    {{- end -}}
+                </div>
+
+                {{- /* ③ 底部正文摘要 */ -}}
+                <div class="moment-desc">
+                    {{- with .Params.description -}}
+                        <p>{{ . | truncate 120 }}</p>
+                    {{- else -}}
+                        <p>{{ .Summary | plainify | truncate 120 }}</p>
+                    {{- end -}}
+                </div>
+            </article>
+            {{- end -}}
+        </div>
+
+        {{- /* 分页器 */ -}}
+        <div class="moments-pagination">
+            {{- partial "paginator.html" . -}}
+        </div>
+    </div>
+{{- end -}}
