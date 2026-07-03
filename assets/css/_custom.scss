@@ -349,3 +349,15 @@
 .page.single .single-title {
     text-align: center !important;
 }
+
+/* ============================================================
+ * 强制所有代码块默认展开
+ * ============================================================ */
+.code-block:not(.open) .highlight {
+    max-height: none !important;
+    overflow-y: visible !important;
+}
+
+.code-block:not(.open) .code-header + .highlight {
+    max-height: none !important;
+}
