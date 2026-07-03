@@ -3,7 +3,7 @@ date = '2026-07-02T18:00:00+08:00'
 draft = false
 title = '学习率 Warmup 预热策略笔记'
 categories = ['Hyperparameters Tuning']
-tags = ['Warmup', 'Learning Rate', '深度学习', '训练技巧']
+tags = ['深度学习', 'Learning Rate', 'Warmup']
 +++
 
 关于深度学习中 Warmup 预热策略的整理，包括为什么需要预热、Constant 和 Gradual 两种方式、以及常见的 Linear/Cosine Warmup 方法。

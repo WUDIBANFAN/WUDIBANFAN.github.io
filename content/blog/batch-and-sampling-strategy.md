@@ -3,7 +3,7 @@ date = '2026-07-02T12:00:00+08:00'
 draft = false
 title = 'Batch 与采样策略（Batch & Sampling Strategy）'
 categories = ['Hyperparameters Tuning']
-tags = ['Batch Size', 'DataLoader', '采样策略', '深度学习']
+tags = ['深度学习', 'Batch Size', 'DataLoader']
 +++
 
 关于 Batch Size 大小选择、学习率联动、采样策略和 DataLoader 优化的完整整理。

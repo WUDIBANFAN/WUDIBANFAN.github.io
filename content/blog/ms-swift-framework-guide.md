@@ -3,7 +3,7 @@ date = '2026-07-03T12:00:00+08:00'
 draft = false
 title = 'ms-swift 大模型微调框架使用笔记'
 categories = ['LLM Fine-tuning']
-tags = ['ms-swift', '大模型', 'LoRA', '微调', 'Qwen']
+tags = ['大模型', '微调', 'ms-swift']
 +++
 
 关于魔搭社区 ms-swift 框架的学习记录，涵盖了环境搭建、SFT 微调、LoRA 训练、推理部署的完整流程。

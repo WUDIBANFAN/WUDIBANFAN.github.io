@@ -3,7 +3,7 @@ date = '2026-07-02T12:00:00+08:00'
 draft = false
 title = '精度与数值稳定（Precision & Numerical Stability）'
 categories = ['Hyperparameters Tuning']
-tags = ['BF16', 'FP16', '混合精度', 'Gradient Checkpointing', '深度学习']
+tags = ['深度学习', '混合精度', '显存优化']
 +++
 
 整理了 BF16/FP16 混合精度训练、Loss Scaling、Gradient Checkpointing 等数值稳定相关的实践经验。

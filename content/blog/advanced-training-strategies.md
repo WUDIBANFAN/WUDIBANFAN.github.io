@@ -3,7 +3,7 @@ date = '2026-07-02T12:00:00+08:00'
 draft = false
 title = '进阶训练策略（Advanced Training Strategies）'
 categories = ['Hyperparameters Tuning']
-tags = ['Two-Stage Training', 'Layer Decay', 'Early Stopping', '深度学习']
+tags = ['深度学习', '训练策略', 'Early Stopping']
 +++
 
 记录了 Two-Stage 训练、学习率分层衰减、Early Stopping 和权重初始化等进阶策略。

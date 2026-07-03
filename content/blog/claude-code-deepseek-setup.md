@@ -3,7 +3,7 @@ date = '2026-07-02T18:00:00+08:00'
 draft = false
 title = 'Claude Code 插件对接 DeepSeek 接口排错笔记'
 categories = ['Dev Tools']
-tags = ['Claude Code', 'DeepSeek', 'VSCode', 'AI', '配置']
+tags = ['AI工具', 'VSCode', 'DeepSeek']
 +++
 
 记录了在 VSCode 中使用 Claude Code 插件对接 DeepSeek 的 Anthropic 兼容接口时踩的坑和最终解决方案。

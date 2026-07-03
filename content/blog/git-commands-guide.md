@@ -3,7 +3,7 @@ date = '2026-07-02T18:00:00+08:00'
 draft = false
 title = 'Git 常用指令速查'
 categories = ['Dev Tools']
-tags = ['Git', '版本控制', '命令行', '开发工具']
+tags = ['Git', '开发工具']
 +++
 
 日常开发中用得最多的 Git 指令整理，按场景分类，方便遇到问题或换新环境时快速查阅。

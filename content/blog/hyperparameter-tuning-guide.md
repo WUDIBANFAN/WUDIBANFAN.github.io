@@ -3,7 +3,7 @@ date = '2026-07-02T18:00:00+08:00'
 draft = false
 title = '深度学习超参数调整（Hyperparameter Tuning）完全指南'
 categories = ['Hyperparameters Tuning']
-tags = ['超参数', 'Learning Rate', 'Batch Size', '激活函数', '深度学习']
+tags = ['深度学习', '超参数', '调优']
 +++
 
 详解神经网络中各类超参数的含义、选择策略，以及实际训练中的调参方法论。

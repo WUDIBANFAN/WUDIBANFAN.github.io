@@ -3,7 +3,7 @@ date = '2026-07-02T18:00:00+08:00'
 draft = false
 title = 'Pytest 从入门到企业实战'
 categories = ['Dev Tools']
-tags = ['Pytest', 'Python', '测试', '自动化', 'Allure']
+tags = ['Python', 'Pytest', '测试']
 +++
 
 关于 Pytest 的学习笔记，从最基础的安装运行，到 Fixture、参数化、conftest、Allure 报告，再到 Requests 接口自动化，基本覆盖了工作中会用到的全部内容。

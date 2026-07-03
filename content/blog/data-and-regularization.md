@@ -3,7 +3,7 @@ date = '2026-07-02T12:00:00+08:00'
 draft = false
 title = '数据与正则化（Data & Regularization）'
 categories = ['Hyperparameters Tuning']
-tags = ['Dropout', 'EMA', '数据增强', '正则化', '深度学习']
+tags = ['深度学习', '正则化', '数据增强']
 +++
 
 整理了 Dropout/DropPath、EMA、数据增强、MixUp/CutMix 和类别均衡等正则化与数据层面的技巧。

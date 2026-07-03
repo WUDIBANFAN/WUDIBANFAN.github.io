@@ -3,7 +3,7 @@ date = '2026-07-03T12:00:00+08:00'
 draft = false
 title = 'MMDetection 2.x CPU 内存泄漏 OOM 问题复盘与根治'
 categories = ['Hyperparameters Tuning']
-tags = ['MMDetection', 'OOM', 'PyTorch', 'DataLoader', 'Debug']
+tags = ['深度学习', 'MMDetection', 'Debug']
 +++
 
 记录了 MMDetection 2.x 训练 NuScenes 数据集时 CPU 内存持续上涨最终 OOM 的完整排查过程与最终方案。

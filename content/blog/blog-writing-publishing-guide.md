@@ -3,7 +3,7 @@ date = '2026-07-01T18:00:00+08:00'
 draft = false
 title = '博客写作与发布全流程记录'
 categories = ['Blog']
-tags = ['Blog', 'Hugo', 'Markdown', 'GitHub', '教程']
+tags = ['Blog', 'Hugo', 'GitHub']
 +++
 
 这份笔记记录我从创建文章、插入图片/链接、推送到 GitHub、以及换电脑后如何继续写作的完整流程。

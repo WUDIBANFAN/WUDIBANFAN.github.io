@@ -3,7 +3,7 @@ date = '2026-07-03T12:00:00+08:00'
 draft = false
 title = 'SLURM 集群使用完全指南'
 categories = ['Dev Tools']
-tags = ['SLURM', 'HPC', 'GPU', '集群', '命令行']
+tags = ['SLURM', 'GPU', '集群']
 +++
 
 SLURM 集群上申请 GPU、提交训练任务、管理会话的完整操作记录，从交互式调试到后台长期训练全覆盖。

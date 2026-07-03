@@ -3,7 +3,7 @@ date = '2026-07-02T12:00:00+08:00'
 draft = false
 title = '学习率调度（Learning Rate Scheduling）'
 categories = ['Hyperparameters Tuning']
-tags = ['Learning Rate', 'Cosine Annealing', 'Warmup', '深度学习']
+tags = ['深度学习', 'Learning Rate']
 +++
 
 整理了 Warmup、CosineAnnealing、Linear Decay、StepLR 等学习率调度策略的原理、用法和适用场景。

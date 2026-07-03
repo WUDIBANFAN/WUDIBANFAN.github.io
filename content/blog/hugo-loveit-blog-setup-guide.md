@@ -1,9 +1,9 @@
 +++
-date = '2026-07-02T11:17:03+08:00'
+date = '2026-07-01T10:17:03+08:00'
 draft = false
 title = '从零搭建 Hugo + LoveIt 博客并部署到 GitHub Pages'
 categories = ['Blog']
-tags = ['Hugo', 'GitHub Pages', 'LoveIt']
+tags = ['Blog', 'Hugo', 'GitHub Pages']
 +++
 
 记录从零开始用 Hugo + LoveIt 主题搭建个人技术博客，并自动部署到 GitHub Pages 的完整过程。
@@ -105,7 +105,7 @@ weight = 5
 ```markdown
 ---
 title: "Welcome to My Tech Notes"
-date: 2026-07-02
+date: 2026-07-01
 draft: false
 ---
 # Hello World

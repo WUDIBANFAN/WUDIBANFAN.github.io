@@ -3,7 +3,7 @@ date = '2026-07-02T12:00:00+08:00'
 draft = false
 title = 'DeepSpeed ZeRO 训练专项调优'
 categories = ['Hyperparameters Tuning']
-tags = ['DeepSpeed', 'ZeRO', '分布式训练', '深度学习']
+tags = ['深度学习', 'DeepSpeed', '分布式训练']
 +++
 
 记录了 DeepSpeed ZeRO 三种 Stage 的原理、8 卡 A800 环境配置、通信优化和显存卸载的实践经验。
