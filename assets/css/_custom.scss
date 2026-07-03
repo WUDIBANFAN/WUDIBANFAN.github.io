@@ -134,6 +134,7 @@ main.main .container {
 .blog-content {
     flex: 1;
     min-width: 0;
+    overflow: hidden;
 }
 
 .content-title {
@@ -156,6 +157,10 @@ main.main .container {
     margin-right: auto;
     border: 1px solid #f0f0f0;
     transition: box-shadow 0.3s ease, transform 0.3s ease;
+    min-width: 0;
+    overflow: hidden;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 .blog-card:hover {
@@ -215,6 +220,9 @@ main.main .container {
     color: #555;
     line-height: 1.7;
     margin-bottom: 1.25rem;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    word-break: break-all;
 }
 
 /* ---- Read More 按钮 ---- */
