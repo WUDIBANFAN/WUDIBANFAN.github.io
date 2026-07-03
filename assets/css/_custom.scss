@@ -342,3 +342,10 @@
 .header-mark::before {
     content: none !important;
 }
+
+/* ============================================================
+ * 单篇文章页标题居中
+ * ============================================================ */
+.single .single-title {
+    text-align: center !important;
+}
