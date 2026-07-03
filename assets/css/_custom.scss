@@ -264,13 +264,9 @@
     animation: fadeInUp 0.6s ease-out both;
 }
 
-/* 分类页 More >> 居中显示在卡片底部 */
+/* 分类页隐藏 More >> */
 .taxonomy-card .more-post {
-    display: block !important;
-    text-align: center;
-    padding-top: 0.5rem;
-    border-top: 1px solid #eee;
-    margin-top: 0.5rem;
+    display: none !important;
 }
 
 /* ============================================================
