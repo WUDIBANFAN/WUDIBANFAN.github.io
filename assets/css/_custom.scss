@@ -6,8 +6,8 @@
 .blog-layout {
     display: flex;
     gap: 2rem;
-    max-width: 1050px;
-    margin: 10px ;
+    max-width: 1200px;
+    margin: 0 auto;
     padding: 2rem 1rem;
     min-height: 100vh;
 }
@@ -265,7 +265,7 @@
 }
 
 /* 分类页隐藏 More >> */
-.taxonomy-card .more-post {
+.categories-card .more-post {
     display: none !important;
 }
 
