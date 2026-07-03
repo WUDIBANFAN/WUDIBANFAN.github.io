@@ -326,6 +326,8 @@ git push origin main
 2. 点击 **Actions** 标签，确认 `Build & Deploy Hugo Blog` 工作流绿色通过
 3. 访问 `https://wudibanfan.github.io` 确认新文章已上线
 
+> **注意**：如果 Actions 已跑完但网页显示的还是旧版本（比如代码块折叠没展开、样式不对等），很可能是浏览器缓存了旧的 CSS/JS 文件。使用 `Ctrl + F5` 强制刷新（跳过缓存），通常能解决问题。移动端浏览器可以在设置中清除缓存后重新打开。
+
 ---
 
 ## 六、迁移到另一台电脑
