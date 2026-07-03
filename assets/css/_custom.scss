@@ -590,3 +590,23 @@
         max-height: 300px;
     }
 }
+
+/* ============================================================
+ * 修复固定 Header 遮挡标题 + 标题居中 + pulse 动画
+ * ============================================================ */
+.blog-layout {
+    padding-top: calc(var(--header-height) + 1.5rem);
+}
+
+.moments-container {
+    padding-top: calc(var(--header-height) + 1.5rem);
+}
+
+/* Blog / Moments 页面标题居中 + pulse 动画（对齐 Categories/Tags 风格） */
+.blog-content .single-title,
+.moments-container .single-title {
+    text-align: center !important;
+    animation-name: pulse !important;
+    animation-duration: 0.5s !important;
+    animation-timing-function: ease-in-out !important;
+}
