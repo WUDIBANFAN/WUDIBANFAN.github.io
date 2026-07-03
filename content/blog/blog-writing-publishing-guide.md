@@ -1,5 +1,5 @@
 +++
-date = '2026-07-03T18:00:00+08:00'
+date = '2026-07-02T18:00:00+08:00'
 draft = false
 title = '博客写作与发布全流程指南'
 categories = ['Blog']
@@ -50,7 +50,7 @@ hugo new blog/文章.md
 
 ```toml
 +++
-date = '2026-07-03T18:00:00+08:00'
+date = '2026-07-02T18:00:00+08:00'
 draft = false
 title = '文章标题'
 categories = ['分类名']
