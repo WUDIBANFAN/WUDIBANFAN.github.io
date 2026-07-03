@@ -1,7 +1,7 @@
 +++
 date = '2026-07-03T12:00:00+08:00'
 draft = false
-title = 'MMDetection 2.x CPU 内存泄漏 OOM 问题复盘与根治'
+title = 'MMDetection 2.x CPU 内存泄漏 OOM 问题复盘'
 categories = ['Hyperparameters Tuning']
 tags = ['深度学习', 'MMDetection', 'Debug']
 +++
