@@ -67,7 +67,7 @@ locale = "en"
 # ----------------------------------------------------------
 [params.section]
   # 每页文章数
-  paginate = 10
+  paginate = 8
   # 日期格式（月-日）
   dateFormat = "01-02"
   # RSS 文章数

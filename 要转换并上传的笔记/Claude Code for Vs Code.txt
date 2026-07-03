@@ -1,0 +1,80 @@
+Claude Code 插件对接DeepSeek接口排错笔记
+一、原始配置存在的3个核心问题
+	1. 鉴权变量名称不合法
+自定义密钥变量名为Nio_claude，插件仅识别ANTHROPIC_AUTH_TOKEN，自定义名称无法被读取，直接造成鉴权失败。
+	2. 模型名称格式不匹配
+DeepSeek的Anthropic兼容接口要求模型ID必须携带后缀，deepseek-v4-pro需要修改为deepseek-v4-pro[1m]，否则会返回模型不存在。
+	3. 配置层级单一，注入不稳定
+仅在VSCode插件内配置环境变量，插件底层二进制程序会优先读取用户目录下的全局配置文件，仅靠插件配置会出现环境变量不生效。
+二、修正后的配置内容
+1. VSCode settings.json（插件配置）
+
+{
+    "claudeCode.preferredLocation": "panel",
+    "claudeCode.environmentVariables": [
+        {
+            "name": "ANTHROPIC_AUTH_TOKEN",
+            "value": "sk-c5d04aba0e634dd68119c0f5ff036cfb"
+        },
+        {
+            "name": "ANTHROPIC_BASE_URL",
+            "value": "https://api.deepseek.com/anthropic"
+        },
+        {
+            "name": "ANTHROPIC_MODEL",
+            "value": "deepseek-v4-pro[1m]"
+        },
+        {
+            "name": "ANTHROPIC_DEFAULT_OPUS_MODEL",
+            "value": "deepseek-v4-pro[1m]"
+        },
+        {
+            "name": "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC",
+            "value": "1"
+        },
+        {
+            "name": "CLAUDE_CODE_LEAN_SYSTEM_PROMPT",
+            "value": "false"
+        }
+    ],
+    "claudeCode.selectedModel": "deepseek-v4-pro[1m]",
+    "python.createEnvironment.trigger": "off",
+    "remote.SSH.remotePlatform": {
+        "10.110.182.4": "linux",
+        "Nio": "linux"
+    },
+    "chat.viewSessions.orientation": "stacked"
+}
+2. 全局兜底配置（必加）
+文件路径：
+	• Linux远程SSH：~/.claude/settings.json
+	• Windows本地：%USERPROFILE%\.claude\settings.json
+
+{
+    "env": {
+        "ANTHROPIC_AUTH_TOKEN": "sk-c5d04aba0e634dd68119c0f5ff036cfb",
+        "ANTHROPIC_BASE_URL": "https://api.deepseek.com/anthropic",
+        "ANTHROPIC_MODEL": "deepseek-v4-pro[1m]",
+        "ANTHROPIC_DEFAULT_OPUS_MODEL": "deepseek-v4-pro[1m]",
+        "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "1",
+        "CLAUDE_CODE_LEAN_SYSTEM_PROMPT": "false"
+    },
+    "model": "deepseek-v4-pro[1m]"
+}
+三、关键兼容优化项
+关闭精简系统提示：新增环境变量CLAUDE_CODE_LEAN_SYSTEM_PROMPT=false，用来解决400 unknown variant system协议报错，适配DeepSeek的Anthropic接口格式。
+四、生效操作步骤
+	1. 保存两份配置文件；
+	2. 完全关闭VSCode，SSH远程需要断开连接后重新登录；
+	3. 在Claude Code面板执行/logout清理旧会话；
+	4. 终端执行校验命令：
+
+env | grep ANTHROPIC
+能正常打印出地址、密钥、模型三个变量，代表环境注入成功。
+五、核心总结
+	1. 鉴权密钥必须使用插件内置变量名ANTHROPIC_AUTH_TOKEN，禁止自定义命名；
+	2. DeepSeek兼容接口的模型名称必须补充[1m]后缀；
+	3. 采用VSCode插件配置+用户目录全局配置双层结构，避免变量注入失效；
+	4. 关闭精简系统提示词，规避协议字段不匹配问题。
+
+deepseek开放平台的API名称只是为了方便用户识别，而不需要体现在VS CODE的Claude code配置文件中

@@ -40,6 +40,14 @@
     margin-bottom: 0.75rem;
 }
 
+/* 首页头像也改为圆形 */
+.home-avatar img {
+    width: 120px !important;
+    height: 120px !important;
+    border-radius: 50% !important;
+    object-fit: cover;
+}
+
 .sidebar-name {
     font-size: 1.15rem;
     font-weight: 700;
@@ -256,10 +264,10 @@
     animation: fadeInUp 0.6s ease-out both;
 }
 
-/* 分类页 More >> 移到卡片底部 */
+/* 分类页 More >> 居中显示在卡片底部 */
 .taxonomy-card .more-post {
     display: block !important;
-    text-align: right;
+    text-align: center;
     padding-top: 0.5rem;
     border-top: 1px solid #eee;
     margin-top: 0.5rem;
