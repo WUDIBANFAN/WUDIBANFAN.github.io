@@ -83,7 +83,7 @@
 
         {{- /* ========== 右侧文章卡片列表 ========== */ -}}
         <main class="blog-content">
-            <h2 class="content-title">
+            <h2 class="single-title animate__animated animate__pulse animate__faster">
                 {{- .Params.Title | default (T .Section) | default .Section | dict "Some" | T "allSome" -}}
             </h2>
 

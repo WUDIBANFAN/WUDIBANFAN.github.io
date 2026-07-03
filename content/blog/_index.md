@@ -1,5 +1,5 @@
 +++
-title = "Blog"
+title = "Blogs"
 date = 2026-07-02
 draft = false
 +++
