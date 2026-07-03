@@ -6,7 +6,7 @@
 .blog-layout {
     display: flex;
     gap: 2rem;
-    max-width: 1200px;
+    max-width: 88%;
     margin: 0 auto;
     padding: 2rem 1rem;
     min-height: 100vh;
@@ -144,7 +144,6 @@
     margin-right: auto;
     border: 1px solid #f0f0f0;
     transition: box-shadow 0.3s ease, transform 0.3s ease;
-    max-width: 1500px;
 }
 
 .blog-card:hover {
