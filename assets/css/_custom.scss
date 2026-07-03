@@ -6,13 +6,22 @@
 .blog-layout {
     display: flex;
     gap: 2rem;
-    width: 100%;
     max-width: 1400px;
     margin: 0 auto;
     padding: 2rem 1rem;
     min-height: 100vh;
     box-sizing: border-box;
     flex: 0 0 auto;
+}
+
+/* 确保所有分页的博客容器宽度一致 */
+main.main .container {
+    max-width: 100%;
+}
+
+.page.archive {
+    width: 100%;
+    max-width: 100%;
 }
 
 /* ---- 左侧固定侧边栏 ---- */
