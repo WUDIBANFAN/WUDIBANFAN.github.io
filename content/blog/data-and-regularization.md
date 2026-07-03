@@ -6,6 +6,9 @@ categories = ['Hyperparameters Tuning']
 tags = ['Dropout', 'EMA', '数据增强', '正则化', '深度学习']
 +++
 
+整理了 Dropout/DropPath、EMA、数据增强、MixUp/CutMix 和类别均衡等正则化与数据层面的技巧。
+
+<!--more-->
 
 > Dropout/DropPath · EMA · 数据增强 · 类别均衡
 

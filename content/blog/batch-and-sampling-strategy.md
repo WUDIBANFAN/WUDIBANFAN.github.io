@@ -6,6 +6,9 @@ categories = ['Hyperparameters Tuning']
 tags = ['Batch Size', 'DataLoader', '采样策略', '深度学习']
 +++
 
+关于 Batch Size 大小选择、学习率联动、采样策略和 DataLoader 优化的完整整理。
+
+<!--more-->
 
 > Batch Size 权衡 · 重采样 · DataLoader 优化
 

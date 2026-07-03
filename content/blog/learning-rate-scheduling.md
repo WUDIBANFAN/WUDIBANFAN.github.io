@@ -6,6 +6,9 @@ categories = ['Hyperparameters Tuning']
 tags = ['Learning Rate', 'Cosine Annealing', 'Warmup', '深度学习']
 +++
 
+整理了 Warmup、CosineAnnealing、Linear Decay、StepLR 等学习率调度策略的原理、用法和适用场景。
+
+<!--more-->
 
 > 深度学习训练中最核心的超参之一
 

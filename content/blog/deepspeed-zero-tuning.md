@@ -6,6 +6,9 @@ categories = ['Hyperparameters Tuning']
 tags = ['DeepSpeed', 'ZeRO', '分布式训练', '深度学习']
 +++
 
+记录了 DeepSpeed ZeRO 三种 Stage 的原理、8 卡 A800 环境配置、通信优化和显存卸载的实践经验。
+
+<!--more-->
 
 > 从 Stage1 到 Stage3，8 卡 A800 环境
 

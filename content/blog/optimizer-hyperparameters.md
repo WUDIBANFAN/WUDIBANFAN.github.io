@@ -6,6 +6,9 @@ categories = ['Hyperparameters Tuning']
 tags = ['AdamW', 'Weight Decay', '梯度裁剪', '深度学习']
 +++
 
+系统整理了 AdamW 优化器的 Weight Decay、Betas、梯度裁剪、梯度累积等核心参数的调优经验。
+
+<!--more-->
 
 > AdamW + 梯度控制 + 梯度累积
 
