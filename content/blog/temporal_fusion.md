@@ -3,7 +3,7 @@ date = '2026-07-06T20:00:00+08:00'
 draft = false
 title = '时序融合（Temporal Fusion）'
 categories = ['Auto Vision']
-tags = ['Temporal Fusion']
+tags = ['Temporal Fusion', 'ViT','Transformer']
 +++
 
 时序融合是将多个连续时间步的视觉特征进行整合，挖掘帧与帧之间的时序依赖关系（运动趋势、状态变化、上下文关联），最终输出包含时空信息的融合特征。
