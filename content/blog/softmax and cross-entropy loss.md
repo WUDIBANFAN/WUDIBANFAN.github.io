@@ -6,7 +6,7 @@ categories = ['Deep Learning Fundamentals']
 tags = ['Softmax回归', '交叉熵损失', '多分类']
 +++
 
-本文介绍 Softmax 回归与交叉熵损失，涵盖原理、Python 实现与可视化，以及基于 PyTorch 在 Iris 数据集上的多分类示例。
+本文梳理了Softmax 回归与交叉熵损失，以及基于 PyTorch 在 Iris 数据集上的多分类示例。
 
 <!--more-->
 

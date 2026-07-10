@@ -210,6 +210,8 @@ C:\Users\ethan.wang18\Desktop\wangcefile\hugo\hugo.exe server -D
 
 浏览器打开 `http://localhost:1313`，可以看到包括草稿在内的全部文章。修改 `.md` 文件保存后浏览器会自动刷新。
 
+> 注意：有时可能会因为浏览器缓存问题导致本地加载后浏览器内容更新不及时（尤其是图片类文件），多按几次ctrl+shift+r即可。
+
 确认一切无误后，**把文章头部的 `draft: true` 改为 `draft: false`**。
 
 ## 五、推送到 GitHub
