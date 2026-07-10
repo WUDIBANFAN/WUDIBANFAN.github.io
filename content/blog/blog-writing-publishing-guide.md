@@ -193,6 +193,14 @@ pip install ms-swift -U
 
 > **图片命名**：建议用英文 + 连字符命名，清晰描述图片内容，如 `hyper-tuning-1.png`、`warmup-cosine.png`。
 
+> **图片居中与标题**：使用 LoveIt 主题的 `{{< image >}}` shortcode 替代标准 Markdown 图片语法，可自动居中并带标题：
+>
+> ```markdown
+> {{< image src="/images/example.png" alt="图片描述" caption="图：图片标题说明" >}}
+> ```
+>
+> `src` 为图片路径（相对于 `static/`），`alt` 为无障碍替代文本，`caption` 为图片下方显示的标题。
+
 ### 3.8 分割线
 
 ```markdown
