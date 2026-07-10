@@ -2,7 +2,7 @@
 date = '2026-07-03T12:00:00+08:00'
 draft = false
 title = 'ms-swift 大模型微调框架使用笔记'
-categories = ['LLM Fine-tuning']
+categories = ['Hyperparameters Tuning']
 tags = ['大模型', '微调', 'ms-swift']
 +++
 
