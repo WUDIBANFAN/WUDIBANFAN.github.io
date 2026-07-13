@@ -2,8 +2,8 @@
 date = '2026-07-13T19:00:00+08:00'
 draft = false
 title = '残差网络（ResNet）：让深度神经网络真正走向深度'
-categories = \['Deep Learning Fundamentals']
-tags = \['深度学习', 'ResNet', '残差连接', 'CNN', '网络退化', 'Skip Connection']
+categories = ['Deep Learning Fundamentals']
+tags = ['深度学习', 'ResNet', '残差连接', 'CNN', '网络退化', 'Skip Connection']
 +++
 
 深层网络易出现梯度消失与性能退化，难以训练。残差连接引入跨层直通链路，支撑超深网络稳定训练，有效提升模型表征能力。
