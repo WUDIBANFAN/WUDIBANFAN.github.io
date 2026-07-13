@@ -2,7 +2,7 @@
 date = '2026-07-10T12:00:00+08:00'
 draft = false
 title = '驾驭工程（Harness Engineering）'
-categories = ['Vibe Coding']
+categories = ['Agent Development']
 tags = [ 'Harness Engineering', 'Superpowers', '多代理协作']
 +++
 

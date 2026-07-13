@@ -2,7 +2,7 @@
 date = '2026-07-10T12:00:00+08:00'
 draft = false
 title = '循环工程（Loop Engineering）'
-categories = ['Vibe Coding']
+categories = ['Agent Development']
 tags = [ 'Loop Engineering', '多代理协作']
 +++
 

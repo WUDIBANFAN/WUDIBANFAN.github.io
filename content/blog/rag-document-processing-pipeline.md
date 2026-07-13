@@ -2,7 +2,7 @@
 date = '2026-07-12T19:17:03+08:00'
 draft = false
 title = '工业级 RAG 文档处理：从脏数据清洗到混合检索的完整流水线'
-categories = ['Vibe Coding']
+categories = ['Agent Development']
 tags = ['RAG', '混合检索', 'Embedding']
 description = '从 PDF 双栏排版到跨页表格，拆解工业级 RAG 的文档解析、结构切片与混合检索全流程。'
 +++

@@ -2,7 +2,7 @@
 date = '2026-07-12T19:17:03+08:00'
 draft = false
 title = '从 RAG 到 Hybrid Retrieval 的 AI 代码检索架构'
-categories = ['Vibe Coding']
+categories = ['Agent Development']
 tags = ['Vibe Coding', 'AI', 'Code Retrieval']
 description = '从 GREP 到 RAG，详解 AI 代码检索的两条路线与 Hybrid Retrieval 架构。'
 +++
